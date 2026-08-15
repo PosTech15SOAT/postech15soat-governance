@@ -1,0 +1,14 @@
+# Copy this file to terraform.tfvars only when overriding the defaults.
+# Never put GitHub tokens in this file.
+
+github_organization = "PosTech15SOAT"
+
+protected_repositories = {
+  numberone-app-auto-service-api = ["main", "develop"]
+  numberone-app-auth             = ["main", "develop"]
+  postech15soat-governance       = ["main", "develop"]
+  postech15soat-infra-cloud      = ["main", "develop"]
+  postech15soat-infra-database   = ["main", "develop"]
+}
+
+required_status_checks_by_repository = {}
