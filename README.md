@@ -14,11 +14,11 @@ das conversas e impede exclusao e force push nas branches selecionadas.
 
 | Repositorio | Branches | Check obrigatorio |
 |---|---|---|
-| `numberone-app-auto-service-api` | `main`, `develop` | ainda nao configurado |
-| `numberone-app-auth` | `main`, `develop` | ainda nao configurado |
-| `postech15soat-infra-cloud` | `main`, `develop` | ainda nao configurado |
-| `postech15soat-infra-database` | `main`, `develop` | ainda nao configurado |
-| `postech15soat-governance` | `main`, `develop` | ainda nao configurado |
+| `numberone-app-auto-service-api` | `main`, `develop` | `Required validation` |
+| `numberone-app-auth` | `main`, `develop` | `Required validation` |
+| `postech15soat-infra-cloud` | `main`, `develop` | `Required validation` |
+| `postech15soat-infra-database` | `main`, `develop` | `Required validation` |
+| `postech15soat-governance` | `main`, `develop` | `Required validation` |
 
 Os rulesets tambem podem apontar para uma branch que ainda nao existe. Assim,
 uma futura branch `develop` ja nasce coberta pela politica da organizacao.

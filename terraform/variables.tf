@@ -29,7 +29,13 @@ variable "required_status_checks_by_repository" {
   description = "Required GitHub check contexts for repositories that already publish CI results."
   type        = map(set(string))
 
-  default = {}
+  default = {
+    numberone-app-auto-service-api = ["Required validation"]
+    numberone-app-auth             = ["Required validation"]
+    postech15soat-governance       = ["Required validation"]
+    postech15soat-infra-cloud      = ["Required validation"]
+    postech15soat-infra-database   = ["Required validation"]
+  }
 
   validation {
     condition = alltrue([

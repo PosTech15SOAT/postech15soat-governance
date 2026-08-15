@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   validate:
-    name: Terraform validation
+    name: Required validation
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
