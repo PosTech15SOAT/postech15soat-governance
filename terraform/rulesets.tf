@@ -63,3 +63,29 @@ resource "github_repository_ruleset" "required_ci" {
     }
   }
 }
+
+resource "github_repository_ruleset" "main_promotion" {
+  for_each = var.main_promotion_repositories
+
+  name        = "Require develop promotion"
+  repository  = each.value
+  target      = "branch"
+  enforcement = "active"
+
+  conditions {
+    ref_name {
+      include = ["refs/heads/main"]
+      exclude = []
+    }
+  }
+
+  rules {
+    required_status_checks {
+      strict_required_status_checks_policy = true
+
+      required_check {
+        context = "Validate promotion source"
+      }
+    }
+  }
+}
