@@ -11,4 +11,10 @@ protected_repositories = {
   postech15soat-infra-database   = ["main", "develop"]
 }
 
-required_status_checks_by_repository = {}
+required_status_checks_by_repository = {
+  numberone-app-auto-service-api = ["Required validation"]
+  numberone-app-auth             = ["Required validation"]
+  postech15soat-governance       = ["Required validation"]
+  postech15soat-infra-cloud      = ["Required validation"]
+  postech15soat-infra-database   = ["Required validation"]
+}
