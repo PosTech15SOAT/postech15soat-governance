@@ -45,3 +45,24 @@ variable "required_status_checks_by_repository" {
     error_message = "Checks may only target protected repositories and each entry needs at least one check."
   }
 }
+
+variable "main_promotion_repositories" {
+  description = "Repositories where Pull Requests to main must originate from develop."
+  type        = set(string)
+
+  default = [
+    "numberone-app-auto-service-api",
+    "numberone-app-auth",
+    "postech15soat-governance",
+    "postech15soat-infra-cloud",
+    "postech15soat-infra-database",
+  ]
+
+  validation {
+    condition = alltrue([
+      for repository in var.main_promotion_repositories :
+      contains(keys(var.protected_repositories), repository)
+    ])
+    error_message = "Main promotion rules may only target protected repositories."
+  }
+}
