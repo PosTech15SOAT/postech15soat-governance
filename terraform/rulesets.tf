@@ -27,7 +27,7 @@ resource "github_repository_ruleset" "baseline" {
     pull_request {
       dismiss_stale_reviews_on_push     = true
       require_code_owner_review         = false
-      require_last_push_approval        = true
+      require_last_push_approval        = false
       required_approving_review_count   = 1
       required_review_thread_resolution = true
     }

@@ -11,6 +11,8 @@ no GitHub Free que mantem repositorios publicos.
 
 O ruleset base exige Pull Request, uma aprovacao de outro integrante, resolucao
 das conversas e impede exclusao e force push nas branches selecionadas.
+O autor do ultimo push pode ser o mesmo integrante que abriu o Pull Request;
+nao e exigida uma aprovacao adicional apenas por causa de novos commits.
 Um ruleset adicional exige que Pull Requests para `main` sejam promovidos a
 partir de `develop`, validado pelo check `Validate promotion source`.
 
