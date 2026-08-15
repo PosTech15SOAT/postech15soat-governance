@@ -11,6 +11,8 @@ no GitHub Free que mantem repositorios publicos.
 
 O ruleset base exige Pull Request, uma aprovacao de outro integrante, resolucao
 das conversas e impede exclusao e force push nas branches selecionadas.
+Um ruleset adicional exige que Pull Requests para `main` sejam promovidos a
+partir de `develop`, validado pelo check `Validate promotion source`.
 
 | Repositorio | Branches | Check obrigatorio |
 |---|---|---|
@@ -56,8 +58,8 @@ O `terraform plan` consulta o GitHub, portanto precisa do token. Os comandos de
 formatacao e validacao nao alteram nenhum recurso remoto.
 
 O workflow `Terraform validation` repete `fmt`, `init` e `validate` em pushes e
-Pull Requests para `main`. Ele nao recebe credenciais e nao executa `plan` ou
-`apply`.
+Pull Requests para `main` e `develop`. Ele nao recebe credenciais e nao executa
+`plan` ou `apply`.
 
 ## Primeira aplicacao
 
@@ -83,4 +85,7 @@ acesso, como S3 ou Terraform Cloud.
 Inclua o repositorio e suas branches em `protected_repositories`, dentro de
 `terraform/variables.tf`. Somente adicione checks em
 `required_status_checks_by_repository` depois que eles tiverem executado com
-sucesso pelo menos uma vez no repositorio correspondente.
+sucesso pelo menos uma vez no repositorio correspondente. Para exigir o fluxo
+`feature/* -> develop -> main`, inclua tambem o repositorio em
+`main_promotion_repositories` e adicione os workflows `Required validation` e
+`Validate promotion source` antes de aplicar o Terraform.
