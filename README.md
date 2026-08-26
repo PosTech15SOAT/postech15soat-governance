@@ -9,9 +9,10 @@ no GitHub Free que mantem repositorios publicos.
 
 ## Escopo inicial
 
-O ruleset base exige Pull Request e resolucao das conversas, e impede exclusao
-e force push nas branches selecionadas. Revisoes continuam recomendadas, mas
-nao ha quantidade minima de aprovacoes nem aprovacao adicional do ultimo push.
+O ruleset base exige Pull Request e impede exclusao e force push nas branches
+selecionadas. Revisoes e resolucao de conversas continuam recomendadas, mas nao
+ha quantidade minima de aprovacoes, aprovacao adicional do ultimo push ou
+obrigacao de resolver conversas antes do merge.
 Um ruleset adicional exige que Pull Requests para `main` sejam promovidos a
 partir de `develop`, validado pelo check `Validate promotion source`.
 

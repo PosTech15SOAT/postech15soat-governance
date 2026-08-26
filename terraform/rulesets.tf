@@ -29,7 +29,7 @@ resource "github_repository_ruleset" "baseline" {
       require_code_owner_review         = false
       require_last_push_approval        = false
       required_approving_review_count   = 0
-      required_review_thread_resolution = true
+      required_review_thread_resolution = false
     }
   }
 }
