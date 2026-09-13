@@ -1,42 +1,30 @@
-## Aplicacao e validacao
+# PosTech15SOAT GitHub Governance
 
-Os rulesets de governanca ja foram provisionados via Terraform e estao ativos nos repositorios definidos em `protected_repositories`.
+Governança como código para os repositórios da organização `PosTech15SOAT`.
 
-Apos qualquer alteracao nas regras de governanca:
+Este repositório administra regras de proteção do GitHub por meio do Terraform. A configuração utiliza rulesets por repositório, compatíveis com organizações no GitHub Free que mantêm repositórios públicos.
 
-1. Revisar o codigo e o resultado de `terraform plan`.
-2. Aplicar a alteracao de forma incremental com `terraform apply`.
-3. Validar os rulesets em **Settings > Rules > Rulesets** no GitHub.
-4. Confirmar que os checks obrigatorios continuam associados as branches protegidas.
-5. Validar o fluxo de promocao por Pull Request:
-   `feature/* -> develop -> main`.
+## Escopo
 
-Atualmente a governanca utiliza, entre outros, os seguintes controles:
+O ruleset base exige Pull Request e impede exclusão e force push nas branches selecionadas.
 
-- **Protected integration branches**: protege `develop` e `main`;
-- **Required CI checks**: exige os checks definidos para `develop` e `main`;
-- **Require develop promotion**: exige que Pull Requests destinados a `main` sejam promovidos a partir de `develop`.
+Revisões e resolução de conversas continuam recomendadas, mas não há quantidade mínima de aprovações, aprovação adicional do último push ou obrigação de resolver conversas antes do merge.
 
-Os rulesets impedem alteracoes que violem o fluxo de governanca configurado, incluindo pushes diretos nas branches protegidas conforme as regras aplicadas.
+Um ruleset adicional exige que Pull Requests para `main` sejam promovidos a partir de `develop`, validado pelo check `Validate promotion source`.
 
-Nao execute `terraform destroy` como forma de corrigir configuracoes.
-Altere o codigo Terraform, revise o plano e aplique a mudanca incrementalmente.
+| Repositório | Branches | Check obrigatório |
+|---|---|---|
+| `numberone-app-auto-service-api` | `main`, `develop` | `Required validation` |
+| `numberone-app-auth` | `main`, `develop` | `Required validation` |
+| `postech15soat-infra-cloud` | `main`, `develop` | `Required validation` |
+| `postech15soat-infra-database` | `main`, `develop` | `Required validation` |
+| `postech15soat-governance` | `main`, `develop` | `Required validation` |
 
-## Estado da governanca
+Os rulesets também podem apontar para uma branch que ainda não existe. Assim, uma futura branch `develop` já nasce coberta pela política da organização.
 
-A governanca dos repositorios do NumberOne esta provisionada e ativa no GitHub.
+## Fluxo de branches
 
-Os repositorios protegidos sao:
-
-- `numberone-app-auth`;
-- `numberone-app-auto-service-api`;
-- `postech15soat-infra-cloud`;
-- `postech15soat-infra-database`;
-- `postech15soat-governance`.
-
-As branches `develop` e `main` sao protegidas pelos rulesets definidos neste repositorio.
-
-O fluxo adotado pelo projeto e:
+O fluxo de desenvolvimento adotado pelo projeto é:
 
 ```text
 feature/*
