@@ -11,6 +11,9 @@ variable "protected_repositories" {
   default = {
     numberone-app-auto-service-api = ["main", "develop"]
     numberone-app-auth             = ["main", "develop"]
+    numberone-billing-service      = ["main"]
+    numberone-inventory-service    = ["main"]
+    numberone-service-order        = ["main"]
     postech15soat-governance       = ["main", "develop"]
     postech15soat-infra-cloud      = ["main", "develop"]
     postech15soat-infra-database   = ["main", "develop"]
@@ -32,6 +35,9 @@ variable "required_status_checks_by_repository" {
   default = {
     numberone-app-auto-service-api = ["Required validation"]
     numberone-app-auth             = ["Required validation"]
+    numberone-billing-service      = ["Validação obrigatória"]
+    numberone-inventory-service    = ["Validação obrigatória"]
+    numberone-service-order        = ["Required validation"]
     postech15soat-governance       = ["Required validation"]
     postech15soat-infra-cloud      = ["Required validation"]
     postech15soat-infra-database   = ["Required validation"]

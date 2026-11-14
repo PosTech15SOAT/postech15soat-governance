@@ -16,6 +16,9 @@ Um ruleset adicional exige que Pull Requests para `main` sejam promovidos a part
 |---|---|---|
 | `numberone-app-auto-service-api` | `main`, `develop` | `Required validation` |
 | `numberone-app-auth` | `main`, `develop` | `Required validation` |
+| `numberone-billing-service` | `main` | `Validação obrigatória` |
+| `numberone-inventory-service` | `main` | `Validação obrigatória` |
+| `numberone-service-order` | `main` | `Required validation` |
 | `postech15soat-infra-cloud` | `main`, `develop` | `Required validation` |
 | `postech15soat-infra-database` | `main`, `develop` | `Required validation` |
 | `postech15soat-governance` | `main`, `develop` | `Required validation` |
@@ -179,6 +182,11 @@ nos respectivos repositórios.
 
 A configuração versionada neste repositório representa a definição da governança, enquanto o GitHub representa o estado efetivamente aplicado dos rulesets.
 
+## Proteção dos microsserviços da Fase 4
+
+OS, Billing e Inventory têm rulesets ativos em `main`. Eles exigem Pull Request e CI verde e bloqueiam exclusão e force push. A validação de CI passou nos PRs de teste da [OS](https://github.com/PosTech15SOAT/numberone-service-order/pull/7), do [Billing](https://github.com/PosTech15SOAT/numberone-billing-service/pull/5) e do [Inventory](https://github.com/PosTech15SOAT/numberone-inventory-service/pull/7). O PR de teste do Inventory usa a branch do Item 2. A promoção de entrega deve usar `develop` após a integração do Item 2.
+
+Depois de integrar esta configuração, revise o plano no estado Terraform da equipe. O primeiro apply deve importar os seis rulesets existentes por meio de `terraform/imports.tf`.
 ## Adicionando um repositório
 
 Para adicionar um novo repositório à governança:
