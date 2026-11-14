@@ -1,5 +1,7 @@
 # PosTech15SOAT GitHub Governance
 
+[Arquitetura e entregáveis da Fase 4](docs/arquitetura-fase-4.md)
+
 Governança como código para os repositórios da organização `PosTech15SOAT`.
 
 Este repositório administra regras de proteção do GitHub por meio do Terraform. A configuração utiliza rulesets por repositório, compatíveis com organizações no GitHub Free que mantêm repositórios públicos.
