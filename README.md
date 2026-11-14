@@ -16,6 +16,8 @@ Um ruleset adicional exige que Pull Requests para `main` sejam promovidos a part
 |---|---|---|
 | `numberone-app-auto-service-api` | `main`, `develop` | `Required validation` |
 | `numberone-app-auth` | `main`, `develop` | `Required validation` |
+| `numberone-billing-service` | `main` | `Validação obrigatória` |
+| `numberone-service-order` | `main` | `Required validation` |
 | `postech15soat-infra-cloud` | `main`, `develop` | `Required validation` |
 | `postech15soat-infra-database` | `main`, `develop` | `Required validation` |
 | `postech15soat-governance` | `main`, `develop` | `Required validation` |
@@ -178,6 +180,12 @@ O estado efetivamente aplicado pode ser verificado em:
 nos respectivos repositórios.
 
 A configuração versionada neste repositório representa a definição da governança, enquanto o GitHub representa o estado efetivamente aplicado dos rulesets.
+
+## Proteção dos microsserviços da Fase 4
+
+Os rulesets definidos para OS e Billing exigem Pull Request e CI verde em `main`, com bloqueio de exclusão e force push. Os rulesets estão ativos. O CI passou nos PRs de promoção da [OS](https://github.com/PosTech15SOAT/numberone-service-order/pull/7) e do [Billing](https://github.com/PosTech15SOAT/numberone-billing-service/pull/5). Depois de integrar esta configuração, revise o plano no estado Terraform da equipe. O primeiro apply deve importar os quatro rulesets existentes por meio de `terraform/imports.tf`.
+
+O `numberone-inventory-service` é privado e a API de rulesets retorna HTTP 403 para o plano atual. Quando a organização habilitar essa capacidade para o repositório, inclua `numberone-inventory-service = ["main"]` em `protected_repositories` e `numberone-inventory-service = ["Validação obrigatória"]` em `required_status_checks_by_repository`, no arquivo de variáveis e no exemplo. Valide o CI do PR de promoção antes de aplicar.
 
 ## Adicionando um repositório
 
