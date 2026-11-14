@@ -19,3 +19,13 @@ import {
   to = github_repository_ruleset.required_ci["numberone-billing-service"]
   id = "numberone-billing-service:27280213"
 }
+
+import {
+  to = github_repository_ruleset.baseline["numberone-inventory-service"]
+  id = "numberone-inventory-service:27280393"
+}
+
+import {
+  to = github_repository_ruleset.required_ci["numberone-inventory-service"]
+  id = "numberone-inventory-service:27280394"
+}
